@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
-import Layout from "../../../components/Layout/LayoutContainer";
+import Layout from "../../../components/Layout/LayoutHOC"
 import RegisterForm from "./RegisterForm";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 import {Card, notification} from "antd"
 import {register} from "../auth.action"
 
+
+@Layout
 @connect(store => store.authReducer)
 export default class Register extends Component {
   componentDidUpdate() {
@@ -30,10 +32,9 @@ export default class Register extends Component {
     if (user) {
       return <Redirect to='/dashboard'/>
     }
-    return <Layout>
-      <Card style={{maxWidth: 500}} className='mx-auto'>
+    return <Card style={{maxWidth: 500}} className='mx-auto'>
         <RegisterForm onSubmit={this.handleSubmit.bind(this)}/>
       </Card>
-    </Layout>
+
   }
 }

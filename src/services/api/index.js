@@ -2,6 +2,7 @@ import axios from 'axios'
 import to from '../to'
 import {getToken} from "../storage"
 import * as auth from "./auth"
+import * as products from "./products"
 
 export const ASSETS_URL = 'http://smktesting.herokuapp.com/static'
 export const API_URL = 'http://smktesting.herokuapp.com/api'
@@ -19,6 +20,8 @@ export const getProducts = async () => {
 
   return response.data
 }
+
+
 // export const getReviews = async (id) => {
 //   const [err, response] = await get('/reviews/' + id,)
 //   if (err) throw err.response.data
@@ -33,5 +36,6 @@ export const getProducts = async () => {
 //   return response.data
 // }
 export {
-  auth
+  auth,
+  products,
 }

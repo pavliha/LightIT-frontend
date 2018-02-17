@@ -3,9 +3,10 @@ import {Card} from 'reactstrap';
 import LoginForm from "./LoginForm";
 import {login} from "../auth.action";
 import {connect} from "react-redux";
-import Layout from "../../../components/Layout/LayoutContainer";
 import {notification} from 'antd';
+import Layout from "../../../components/Layout/LayoutHOC"
 
+@Layout
 @connect(store => store.authReducer)
 export default class Login extends Component {
   handleSubmit(values) {
@@ -24,10 +25,8 @@ export default class Login extends Component {
   }
 
   render() {
-    return <Layout>
-      <Card style={{maxWidth: 400}} className='mx-auto p-4'>
-        <LoginForm errors={this.props.errors} onSubmit={this.handleSubmit.bind(this)}/>
-      </Card>
-    </Layout>
+    return <Card style={{maxWidth: 400}} className='mx-auto p-4'>
+      <LoginForm errors={this.props.errors} onSubmit={this.handleSubmit.bind(this)}/>
+    </Card>
   }
 }

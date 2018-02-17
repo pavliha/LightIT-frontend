@@ -1,9 +1,10 @@
-import {GET_PRODUCTS} from "./products.action"
+import {GET_PRODUCT, GET_PRODUCTS} from "./products.action"
 
 const initialState = {
   loading: false,
-  errors: [],
-  products: []
+  error: null,
+  products: [],
+  product: null,
 };
 
 export default (state = initialState, {type, payload}) => {
@@ -25,6 +26,27 @@ export default (state = initialState, {type, payload}) => {
       return {
         ...state,
         errors: payload,
+        loading: false
+      }
+
+
+    case GET_PRODUCT + "_PENDING":
+      return {
+        ...state,
+        loading: true,
+      }
+
+    case GET_PRODUCT + "_FULFILLED":
+      return {
+        ...state,
+        product: payload,
+        loading: false
+      }
+
+    case GET_PRODUCT + "_REJECTED":
+      return {
+        ...state,
+        error: payload,
         loading: false
       }
     default: {

@@ -48,6 +48,8 @@ export default (state = initialState, {type, payload}) => {
       return {
         ...state,
         token: null,
+        user: null,
+
       }
 
     default: {

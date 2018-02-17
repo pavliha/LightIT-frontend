@@ -1,7 +1,9 @@
 import React from 'react';
 import Route from 'react-router/es/Route';
 import {Switch} from 'react-router-dom';
-import Index from './scenes/Index';
+import Products from './scenes/Products/ProductsScene';
+import Product from './scenes/Products/ProductScene';
+
 import LoginScene from './scenes/Auth/Login/LoginScene';
 import RegisterScene from './scenes/Auth/Register/RegisterScene';
 import {createBrowserHistory} from 'history';
@@ -16,10 +18,13 @@ export default () =>
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={Index}/>
+        <Route exact path="/" component={Products}/>
         <Route exact path="/login" component={LoginScene}/>
         <Route exact path="/register" component={RegisterScene}/>
         <Route exact path="/home" component={Home}/>
+        <Route exact path="/products" component={Home}/>
+        <Route exact path="/products/:id" component={Product}/>
+
       </Switch>
     </ConnectedRouter>
   </Provider>

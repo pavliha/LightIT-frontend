@@ -6,7 +6,7 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import promiseMiddleware from 'redux-promise-middleware'
 import authReducer from './scenes/Auth/auth.reducer'
 import {login} from "./scenes/Auth/auth.action";
-import productsReducer from './scenes/Index/products.reducer'
+import productsReducer from './scenes/Products/products.reducer'
 
 const reducers = combineReducers({
   router: routerReducer,
