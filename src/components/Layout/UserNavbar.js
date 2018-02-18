@@ -1,6 +1,7 @@
 import React from 'react';
 import {Nav, Navbar, NavbarBrand, NavItem, NavLink,} from 'reactstrap';
 import {Avatar, Dropdown, Icon, Menu} from "antd";
+import {Link} from "react-router-dom"
 
 
 export default class UserNavbar extends React.Component {
@@ -33,7 +34,7 @@ export default class UserNavbar extends React.Component {
       <div>
 
         <Navbar className="navbar-light bg-light" expand="md">
-          <NavbarBrand to="/">LightIT</NavbarBrand>
+          <NavbarBrand><Link to='/'>LightIT</Link></NavbarBrand>
           <Nav navbar>
             <NavItem>
               <NavLink>

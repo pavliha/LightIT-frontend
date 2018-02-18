@@ -7,11 +7,13 @@ import promiseMiddleware from 'redux-promise-middleware'
 import authReducer from './scenes/Auth/auth.reducer'
 import {login} from "./scenes/Auth/auth.action";
 import productsReducer from './scenes/Products/products.reducer'
+import reviewsReducer from './scenes/Products/Reviews/reviews.reducer'
 
 const reducers = combineReducers({
   router: routerReducer,
   authReducer,
-  productsReducer
+  productsReducer,
+  reviewsReducer
 })
 
 

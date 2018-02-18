@@ -8,12 +8,12 @@ export const register = async ({username, password}) => {
   if (err) throw err.response.data
   if (!response.data.success) throw response.data.message
 
-  Storage.setToken(response.data)
+  Storage.setUser(response.data.token, username)
 
 
   return {
-    user:username,
-    token:response.data.token
+    user: username,
+    token: response.data.token
   }
 }
 
@@ -25,10 +25,10 @@ export const login = async ({username, password}) => {
   if (err) throw err.response.data
   if (!response.data.success) throw response.data.message
 
-  Storage.setToken(response.data.token)
+  Storage.setUser(response.data.token, username)
 
   return {
-    user:username,
-    token:response.data.token
+    user: username,
+    token: response.data.token
   }
 }

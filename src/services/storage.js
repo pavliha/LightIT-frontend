@@ -1,14 +1,16 @@
-import JWT from "jwt-decode"
-
 export const getUser = () => {
-  return JWT(localStorage.getItem('token')).data
+  return {
+    token: localStorage.getItem('token'),
+    user: localStorage.getItem('user')
+  }
 }
 
 // export const setUser = (user) => {
 //   localStorage.setItem("user", JSON.stringify(user))
 // }
-export const setToken = (token) => {
+export const setUser = (token, user) => {
   localStorage.setItem('token', token)
+  localStorage.setItem('user', user)
 }
 
 export const getToken = () => {

@@ -9,7 +9,7 @@ import Layout from "../../components/Layout/LayoutHOC"
 
 @Layout
 @connect(store => store.productsReducer)
-export default class ProductListContainer extends React.Component {
+export default class ProductsScene extends React.Component {
   componentDidMount() {
     this.props.dispatch(getProducts())
   }
@@ -18,7 +18,7 @@ export default class ProductListContainer extends React.Component {
     return <Container>
       {this.props.products.map((product, key) => {
         return (
-          <Card {...key} className='mt-3'
+          <Card key={key} className='mt-3'
                 extra={<Link to={'/products/' + product.id}>Подробнее</Link>}
                 title={product.title}>
             <Row>

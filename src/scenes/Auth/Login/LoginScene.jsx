@@ -21,7 +21,7 @@ export default class Login extends Component {
       });
     }
     if (this.props.user)
-      this.props.history.push('/home')
+      this.props.history.push('/')
   }
 
   render() {

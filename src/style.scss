@@ -1,18 +1,25 @@
 .ant-upload-select-picture-card i {
-    font-size: 32px;
-    color: #999;
+  font-size: 32px;
+  color: #999;
 }
 
 .ant-upload-select-picture-card .ant-upload-text {
-    margin-top: 8px;
-    color: #666;
+  margin-top: 8px;
+  color: #666;
 }
+
 #components-form-demo-normal-login .login-form {
-    max-width: 300px;
+  max-width: 300px;
 }
+
 #components-form-demo-normal-login .login-form-forgot {
-    float: right;
+  float: right;
 }
+
 #components-form-demo-normal-login .login-form-button {
-    width: 100%;
+  width: 100%;
+}
+
+.ant-rate-disabled .ant-rate-star {
+  cursor: default;
 }

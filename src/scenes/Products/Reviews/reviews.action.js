@@ -1,0 +1,8 @@
+import * as API from '../../../services/api'
+
+export const GET_REVIEWS = 'GET_REVIEWS'
+
+export const getReviews = (user_id) => ({
+  type: GET_REVIEWS,
+  payload: API.reviews.user(user_id),
+})
