@@ -16,17 +16,21 @@ export default class ProductsScene extends React.Component {
 
   render() {
     return <Container>
-      <Row>
+      <Row type="flex" justify="center" align="top">
         {this.props.products.map((product, key) => {
           return (
-            <Col key={key} span={7}>
-              <Card
-                style={{width: 300}}
-                cover={<img alt="example" height={250} src={`${ASSETS_URL}/${product.img}`}/>}>
+            <Col key={key} span={{xs: 12, sm: 7}}>
+              <Card className='m-2'
+                    cover={
+                      <div style={{width: 300, height: 300}}>
+                        <img src={`${ASSETS_URL}/${product.img}`} width='100%'/>
+                      </div>
+                    }>
                 <Card.Meta
                   title={product.title}
                   description={<div>{product.text}
-                    <div className='mt-3'><Link to={'/products/' + product.id}><Button className='btn-block'>Подробнее</Button></Link></div>
+                    <div className='mt-3'><Link to={'/products/' + product.id}><Button
+                      className='btn-block'>Подробнее</Button></Link></div>
                   </div>}/>
               </Card>
             </Col>

@@ -21,27 +21,25 @@ export default class ProductScene extends React.Component {
     if (!loading && !product) return <div>No product</div>
     if (error) return <Alert message={"Error displaying reviews: " + error} type="error"/>
 
-    return <Row>
-      <Col span={7}>
-        <Card
-          style={{width: 300}}
-          cover={<img alt="example" height={250} src={`${ASSETS_URL}/${product.img}`}/>}>
+    return <Row type='flex'>
+      <Col span={{xs: 24, sm: 7}}>
+        <Card className='mx-3'
+          cover={<img alt="example" src={`${ASSETS_URL}/${product.img}`}/>}>
           <Card.Meta
             title={product.title}
             description={<div>
               {product.text}
-
             </div>}/>
         </Card>
-        <div className='mt-3'>
+        <div className='m-3'>
           <Link to={'/products'}>
-            <Button type="primary">
-              <Icon type="left" />Go back
+            <Button type="primary" className='btn-block '>
+              <Icon type="left"/>Go back
             </Button>
           </Link>
         </div>
       </Col>
-      <Col span={11}>
+      <Col span={{xs: 24, sm: 18}}>
         <Reviews/>
       </Col>
     </Row>
