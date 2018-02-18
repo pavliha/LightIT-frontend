@@ -1,4 +1,5 @@
 import {get, post} from "./index"
+import store from "../../store"
 
 export const user = async (id) => {
   const [err, response] = await get('/reviews/' + id,)
@@ -7,9 +8,8 @@ export const user = async (id) => {
   return response.data
 }
 
-export const add = async ({id, rate, text}) => {
+export const add = async (id, {rate, text}) => {
   const [err, response] = await post('/reviews/' + id, {rate, text})
   if (err) throw err.response.data
-
-  return response.data
+  return {}
 }

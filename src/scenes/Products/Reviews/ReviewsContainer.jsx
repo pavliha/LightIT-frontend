@@ -1,10 +1,10 @@
 import React from "react";
-import {Alert, Avatar, Col, Icon, Input, List, Rate, Row, Spin, TextArea} from "antd"
+import {Alert, Avatar, Col, Icon, List, Rate, Row, TextArea} from "antd"
 import {connect} from "react-redux"
 import {withRouter} from "react-router-dom"
-import {getReviews} from "./reviews.action"
+import {addReview, getReviews} from "./reviews.action"
 import moment from 'moment'
-import ReviewForm from "./ReviewForm"
+import ReviewForm from "./ReviewFormContainer"
 import CenteredSpin from "../../../components/CenteredSpin"
 
 @connect(store => store.reviewsReducer)
@@ -15,14 +15,15 @@ export default class ReviewsContainer extends React.Component {
   }
 
   render() {
-    const {loading, reviews, error} = this.props
+    const {loading, reviews, error, dispatch} = this.props
     if (loading) return <CenteredSpin/>
     if (!loading && !reviews.length) return <div>No reviews</div>
     if (error) return <Alert message={"Error displaying reviews: " + error} type="error"/>
 
+    const id = this.props.match.params.id
     return <List
       size="large"
-      header={<ReviewForm/>}
+      header={<ReviewForm onSubmit={(values) => dispatch(addReview(id, values))}/>}
       bordered
       dataSource={reviews}
       renderItem={item => (

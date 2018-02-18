@@ -1,15 +1,17 @@
 import React from 'react';
 import {Container} from 'reactstrap';
 import NavBarContainer from "./NavBarContainer"
+import {Layout as AntLayout} from 'antd'
 
 export default function Layout(WrappedComponent) {
   return class extends React.Component {
     render() {
-      return <div>
+      return <div style={{height:"100%"}}>
         <NavBarContainer/>
-        <Container fluid className='mt-3'>
+        <Container style={{minHeight: '82.5%'}} className='mt-3'>
           <WrappedComponent {...this.props}/>
         </Container>
+        <AntLayout.Footer>LightIT</AntLayout.Footer>
       </div>
     }
   }

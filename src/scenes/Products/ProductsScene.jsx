@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux"
 import {getProducts} from "./products.action"
-import {Card, Col, Row} from "antd"
+import {Button, Card, Col, Row} from "antd"
 import {ASSETS_URL} from "../../services/api"
 import {Container} from "reactstrap"
 import {Link} from "react-router-dom"
@@ -16,25 +16,23 @@ export default class ProductsScene extends React.Component {
 
   render() {
     return <Container>
-      {this.props.products.map((product, key) => {
-        return (
-          <Card key={key} className='mt-3'
-                extra={<Link to={'/products/' + product.id}>Подробнее</Link>}
-                title={product.title}>
-            <Row>
-              <Col span={6}>
-                <img src={`${ASSETS_URL}/${product.img}`} width='100%'/>
-              </Col>
-              <Col span={18}>
-                <div className='p-4'>
-                  {product.text}
-                </div>
-
-              </Col>
-            </Row>
-          </Card>
-        )
-      })}
+      <Row>
+        {this.props.products.map((product, key) => {
+          return (
+            <Col key={key} span={7}>
+              <Card
+                style={{width: 300}}
+                cover={<img alt="example" height={250} src={`${ASSETS_URL}/${product.img}`}/>}>
+                <Card.Meta
+                  title={product.title}
+                  description={<div>{product.text}
+                    <div className='mt-3'><Link to={'/products/' + product.id}><Button className='btn-block'>Подробнее</Button></Link></div>
+                  </div>}/>
+              </Card>
+            </Col>
+          )
+        })}
+      </Row>
     </Container>
 
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Nav, Navbar, NavbarBrand, NavItem, NavLink,} from 'reactstrap';
+import {Nav, Navbar, NavItem, NavLink,} from 'reactstrap';
 import {Avatar, Dropdown, Icon, Menu} from "antd";
 import {Link} from "react-router-dom"
 
@@ -33,8 +33,8 @@ export default class UserNavbar extends React.Component {
     return (
       <div>
 
-        <Navbar className="navbar-light bg-light" expand="md">
-          <NavbarBrand><Link to='/'>LightIT</Link></NavbarBrand>
+        <Navbar className="navbar-dark bg-dark" expand="md">
+          <Link className='navbar-brand' to='/'>LightIT</Link>
           <Nav navbar>
             <NavItem>
               <NavLink>
