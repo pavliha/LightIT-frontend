@@ -37,12 +37,11 @@ export default (state = initialState, {type, payload}) => {
     case ADD_REVIEW + "_REJECTED":
       return {
         ...state,
-        errors: payload,
+        error: payload,
         loading: false
       }
 
     case ADD_REVIEW + "_FULFILLED":
-      debugger
       state.reviews.push(payload)
       state.loading = false
       return state

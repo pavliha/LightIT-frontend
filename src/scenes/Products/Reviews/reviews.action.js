@@ -9,6 +9,6 @@ export const getReviews = (user_id) => ({
 })
 
 export const addReview = (id, values) => ({
-  type: GET_REVIEWS,
+  type: ADD_REVIEW,
   payload: API.reviews.add(id,values),
 })

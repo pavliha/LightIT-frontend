@@ -24,12 +24,12 @@ export default class ReviewFormContainer extends React.Component {
     if (!user) return <div>Sign up to leave the comment</div>
     return <Form>
       <Form.Item>
-        {getFieldDecorator('comment', {
+        {getFieldDecorator('text', {
           rules: [{required: true, message: 'Please input your comment',}]
         })(<TextArea rows={4} placeholder='Please leave your review here...'/>)}
       </Form.Item>
       <Form.Item>
-        {getFieldDecorator('text', {
+        {getFieldDecorator('rate', {
           rules: [{required: true, message: 'Please rate the product',}]
         })(<Rate style={{color: 'rgba(0, 0, 0, 0.3)', fontSize: '1rem'}}
                  character={<Icon type="star"/>}/>)}

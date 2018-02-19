@@ -6,6 +6,7 @@ import {addReview, getReviews} from "./reviews.action"
 import moment from 'moment'
 import ReviewForm from "./ReviewFormContainer"
 import CenteredSpin from "../../../components/CenteredSpin"
+import {sortBy} from "lodash"
 
 @connect(store => store.reviewsReducer)
 @withRouter
@@ -20,12 +21,14 @@ export default class ReviewsContainer extends React.Component {
     if (!loading && !reviews.length) return <div>No reviews</div>
     if (error) return <Alert message={"Error displaying reviews: " + error} type="error"/>
 
+    const sortedReviews = sortBy(reviews, "created_at").reverse()
+
     const id = this.props.match.params.id
     return <List
       size="large"
       header={<ReviewForm onSubmit={(values) => dispatch(addReview(id, values))}/>}
       bordered
-      dataSource={reviews}
+      dataSource={sortedReviews}
       renderItem={item => (
         <List.Item>
           <Row type="flex" justify="start">
