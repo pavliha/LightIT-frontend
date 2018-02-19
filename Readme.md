@@ -1,2 +1,4 @@
 # To start the project run:
-## npm run dev
+
+### yarn install
+### npm start
