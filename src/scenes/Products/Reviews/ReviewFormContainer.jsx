@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux"
-import {Button, Form, Icon, Input, Rate} from "antd"
+import {Alert, Button, Form, Icon, Input, Rate} from "antd"
 
 const {TextArea} = Input;
 
@@ -18,11 +18,11 @@ export default class ReviewFormContainer extends React.Component {
   }
 
   render() {
-    const {user} = this.props
+    const {user, addError} = this.props
     const {getFieldDecorator} = this.props.form
-
     if (!user) return <div>Sign up to leave the comment</div>
     return <Form>
+      {addError ? <Alert className='mt-3 mb-4' message={"Error adding review: " + addError} type="error"/> : null}
       <Form.Item>
         {getFieldDecorator('text', {
           rules: [{required: true, message: 'Please input your comment',}]

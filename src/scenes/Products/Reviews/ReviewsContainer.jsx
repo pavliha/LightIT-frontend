@@ -16,17 +16,16 @@ export default class ReviewsContainer extends React.Component {
   }
 
   render() {
-    const {loading, reviews, error, dispatch} = this.props
+    const {loading, reviews, error, dispatch, addError} = this.props
     if (loading) return <CenteredSpin/>
     if (!loading && !reviews.length) return <div>No reviews</div>
     if (error) return <Alert message={"Error displaying reviews: " + error} type="error"/>
-
     const sortedReviews = sortBy(reviews, "created_at").reverse()
 
     const id = this.props.match.params.id
     return <List
       size="large"
-      header={<ReviewForm onSubmit={(values) => dispatch(addReview(id, values))}/>}
+      header={<ReviewForm addError={addError} onSubmit={(values) => dispatch(addReview(id, values))}/>}
       bordered
       dataSource={sortedReviews}
       renderItem={item => (

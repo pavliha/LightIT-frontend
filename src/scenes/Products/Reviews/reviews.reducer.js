@@ -3,6 +3,8 @@ import {ADD_REVIEW, GET_REVIEWS} from "./reviews.action"
 const initialState = {
   loading: false,
   error: null,
+  addError: null,
+
   reviews: [],
 };
 
@@ -24,7 +26,7 @@ export default (state = initialState, {type, payload}) => {
     case GET_REVIEWS + "_REJECTED":
       return {
         ...state,
-        errors: payload,
+        error: payload,
         loading: false
       }
 
@@ -37,12 +39,11 @@ export default (state = initialState, {type, payload}) => {
     case ADD_REVIEW + "_REJECTED":
       return {
         ...state,
-        error: payload,
+        addError: payload,
         loading: false
       }
 
     case ADD_REVIEW + "_FULFILLED":
-      state.reviews.push(payload)
       state.loading = false
       return state
 
